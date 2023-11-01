@@ -7,10 +7,9 @@ import json
 
 requests.packages.urllib3.disable_warnings()  # 禁用安全请求警告
 mode = input("请输入模式：1.线上 2.线下 3.线上+线下\n")  # 模式选择
-# cookies = {"PHPSESSID": "2q0teo9d8f932m1gkeuta6eqr7" or input("请输入cookie:")}  # cookie
-cookies = {"PHPSESSID": "akp868k55th0ja6magua84jec2" or input("请输入cookie:")}  # cookie
-deptHisId = "7" or input("请输入科室id:")  # 科室id
-docHisId = "1185" or input("请输入医生id:")  # 医生id
+cookies = {"PHPSESSID": "" or input("请输入cookie:")}  # cookie
+deptHisId = "" or input("请输入科室id:")  # 科室id
+docHisId = "" or input("请输入医生id:")  # 医生id
 base_url = "https://his.mobimedical.cn"  # 基础url
 flag = 0  # 是否锁号成功
 times = 1  # 查询次数
@@ -138,7 +137,7 @@ def getCard():
 def pushMsg(name, dept):  # 微信PushPlus推送消息，可选，自行注册
     headers = {"Content-Type": "application/json"}
     body = {
-        "token": "a098c719139b42cab4ff86b05f719dc2",  # 微信PushPlus推送token
+        "token": "",  # 微信PushPlus推送token
         "title": f"{name}挂号{dept}成功,待缴费",
         "content": f"<style>button{{width:200px;height:50px;background-color:#7cd1ff;border-radius:5px;border:none;outline:none;cursor:pointer;font-weight:600;}}buttona{{display:block;text-decoration:none;font-size:16px;text-align:center;line-height:50px;}}</style><h3>{name}挂号{dept}成功,待缴费</h3><button><a href='https://his.mobimedical.cn/index.php?g=Wap&m=CloudPlusRegister&a=addRegister&wx=MbTXcN1k'>点击缴费</a></button><h3 style='color:red'>若无法支付，则手动从公众号—就医服务—门诊服务中的“自助取号”进入支付</h3>",
         "topic": "957549315",
